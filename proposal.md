@@ -1,6 +1,7 @@
 ### Memory Game
 
-# Link to Repository:
+# Link to Repository: 
+https://github.com/CFM08/pfda-finalproject-mulkeyclara.git
 
 I plan to make a memory game, one where you have to remember the order of colors and shapes in a certain order. You'll be prompted with an order that you will than have to repeat for three rounds to win.
 
