@@ -23,7 +23,7 @@ I plan to make a memory game, one where you have to remember the order of colors
       Flashes of colors, colors presented in 3 x 3 grid for player to choose. Resulting screens announcing game status.
 
 ## Milestones:
-     # 1 Week: Screens Designed
-     # 2 Week: Groundwork all done
-     # 3 Week: Beta Testing & Alterations
-     # 4 Week: Final Touches
+     1 Week: Screens Designed
+     2 Week: Groundwork all done
+     3 Week: Beta Testing & Alterations
+     4 Week: Final Touches
