@@ -116,6 +116,8 @@ def main():
                     elif state['game_state'] == GAME_OVER:
                           state['game_state'] = START
 
+      while running:
+            
             clock.tick(60)
            
             pygame.quit()
