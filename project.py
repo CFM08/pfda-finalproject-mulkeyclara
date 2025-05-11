@@ -46,3 +46,10 @@ def show_message(screen, text):
       render = font.render(text, True, (255, 255, 255))
       rect = render.get_rect(center=(WIDTH // 2, HEIGHT // 2))
       screen.blit(render, rect)
+
+def start_new_round(state):
+      state['sequence'].append(random.randint(0, 8))
+      state['user_sequence'] = []
+      state['flashing'] = True
+      state['flash_index'] = 0
+      state['flash_timer'] = pygame.time.get_ticks()
