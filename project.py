@@ -78,20 +78,17 @@ def main():
                   show_message(screen, "Click to Start")
 
             elif state['game_state'] == PLAYING:
-                  if state['flashing']:
-                        if now - state['flash_timer'] > state['flash_delay']:
-                              state['flash_timer'] = now
-                              state['flash_index'] += 1
-                              if state['flash_index'] >= len(state['sequence']):
-                                    state['flashing'] = False
-                  highlight = (
+                 if state['flashing']:
+                     if now - state['flash_timer'] > state['flash_delay']:
+                             state['flash_timer'] = now
+                             state['flash_index'] += 1
+                             if state['flash_index'] >= len(state['sequence']):
+                                state['flashing'] = False
+                 highlight =(
                       state['sequence'][state['flash_index']]
                       if state['flashing'] and state['flash_index'] < len(state['sequence'])
                       else None
                 )
-            draw_grid(screen, highlight)
-            
-            elif state['game_state'] == GAME_OVER:
-                show_message(screen, "Game Over! Click To Restart!")
+                 draw_grid(screen, highlight)
             
             pygame.display.flip()
