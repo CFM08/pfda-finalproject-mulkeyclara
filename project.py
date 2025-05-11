@@ -92,3 +92,33 @@ def main():
                  draw_grid(screen, highlight)
             
             pygame.display.flip()
+
+            for event in pygame.event.get():
+                  if event.type == pygame.QUIT:
+                        running = False
+
+                  elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if state['game_state'] == START:
+                          state['sequence'] = []
+                          start_new_round(state)
+                          state['game_state'] = PLAYING
+
+                    elif state['game_state'] == PLAYING and not state['flashing']:
+                          tile = get_tile_from_pos(event.pos)
+                          state['user_sequence'].append(tile)
+
+                          if tile != state['sequence'][len(state['sequence']) - 1]:
+                                state['game_state'] = GAME_OVER
+                          elif len(state['user_sequence']) == len(state['sequence']):
+                                pygame.time.delay(500)
+                                start_new_round(state)
+                    
+                    elif state['game_state'] == GAME_OVER:
+                          state['game_state'] = START
+
+            clock.tick(60)
+           
+            pygame.quit()
+      
+if __name__ == "__main__":
+      main()
