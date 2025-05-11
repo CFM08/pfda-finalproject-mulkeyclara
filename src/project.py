@@ -57,7 +57,7 @@ def start_new_round(state):
 def main():
       screen = pygame.display.set_mode((WIDTH, HEIGHT))
       pygame.display.set_caption("Color Memory Game")
-      clock = pygame.time.clock()
+      clock = pygame.time.Clock()
 
       state = {
             'game_state' : START,
