@@ -84,9 +84,14 @@ def main():
                               state['flash_index'] += 1
                               if state['flash_index'] >= len(state['sequence']):
                                     state['flashing'] = False
-                highlight = (
+                  highlight = (
                       state['sequence'][state['flash_index']]
                       if state['flashing'] and state['flash_index'] < len(state['sequence'])
                       else None
                 )
             draw_grid(screen, highlight)
+            
+            elif state['game_state'] == GAME_OVER:
+                show_message(screen, "Game Over! Click To Restart!")
+            
+            pygame.display.flip()
