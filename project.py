@@ -112,7 +112,7 @@ def main():
 
                                 if len(state['user_sequence']) == len(state['sequence']):
                                  pygame.time.delay(500)
-                                start_new_round(state)
+                                 start_new_round(state)
                           else:
                                state['game_state'] = GAME_OVER
                     
