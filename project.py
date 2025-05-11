@@ -22,3 +22,17 @@ COLORS = [
 ]
 
 START, PLAYING, GAME_OVER = "start", "playing", "game_over"
+
+def draw_grid(screen, highlight=None):
+    for i in range (9):
+        row = i // 3
+        col = i % 3
+        x = col * TILE_SIZE
+        y = row * TILE_SIZE
+        color = COLORS[i]
+        if highlight == i:
+            color = tuple(min(255, c + 100) for c in color) # brightening
+        pygame.draw.rect(screen, color, (x, y, TILE_SIZE, TILE_SIZE))
+        pygame.draw.rect(screen, (0, 0 , 0), (x, y, TILE_SIZE, TILE_SIZE), 3)
+
+        
