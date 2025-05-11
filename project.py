@@ -68,3 +68,25 @@ def main():
             'flash_timer' : 0,
             'flash_delay' : 650
       }
+
+      running = True
+      while running:
+            screen.fill((30, 30, 30))
+            now = pygame.time.get_ticks()
+
+            if state['game_state'] == START:
+                  show_message(screen, "Click to Start")
+
+            elif state['game_state'] == PLAYING:
+                  if state['flashing']:
+                        if now - state['flash_timer'] > state['flash_delay']:
+                              state['flash_timer'] = now
+                              state['flash_index'] += 1
+                              if state['flash_index'] >= len(state['sequence']):
+                                    state['flashing'] = False
+                highlight = (
+                      state['sequence'][state['flash_index']]
+                      if state['flashing'] and state['flash_index'] < len(state['sequence'])
+                      else None
+                )
+            draw_grid(screen, highlight)
