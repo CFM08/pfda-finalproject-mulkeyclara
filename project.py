@@ -20,3 +20,5 @@ COLORS = [
     (255, 0, 265), #magenta
     (255, 168, 0), #orange
 ]
+
+START, PLAYING, GAME_OVER = "start", "playing", "game_over"
