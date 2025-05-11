@@ -105,20 +105,23 @@ def main():
 
                     elif state['game_state'] == PLAYING and not state['flashing']:
                           tile = get_tile_from_pos(event.pos)
-                          state['user_sequence'].append(tile)
+                          current_index = len(state['user_sequence'])
 
-                          if tile != state['sequence'][len(state['sequence']) - 1]:
-                                state['game_state'] = GAME_OVER
-                          elif len(state['user_sequence']) == len(state['sequence']):
-                                pygame.time.delay(500)
+                          if tile == state['sequence'][current_index]:
+                                state['user_sequence'].append(tile)
+
+                                if len(state['user_sequence']) == len(state['sequence']):
+                                 pygame.time.delay(500)
                                 start_new_round(state)
+                          else:
+                               state['game_state'] = GAME_OVER
                     
                     elif state['game_state'] == GAME_OVER:
                           state['game_state'] = START
 
             clock.tick(60)
            
-            pygame.quit()
+      pygame.quit()
       
 if __name__ == "__main__":
       main()
