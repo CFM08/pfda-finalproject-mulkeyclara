@@ -35,4 +35,14 @@ def draw_grid(screen, highlight=None):
         pygame.draw.rect(screen, color, (x, y, TILE_SIZE, TILE_SIZE))
         pygame.draw.rect(screen, (0, 0 , 0), (x, y, TILE_SIZE, TILE_SIZE), 3)
 
-        
+def get_tile_from_pos(pos):
+            x, y = pos
+            col = x //TILE_SIZE
+            row = y // TILE_SIZE
+            return row * 3 + col
+
+def show_message(screen, text):
+      font = pygame.font.SysFont(None, 60)
+      render = font.render(text, True, (255, 255, 255))
+      rect = render.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+      screen.blit(render, rect)
