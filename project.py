@@ -53,3 +53,18 @@ def start_new_round(state):
       state['flashing'] = True
       state['flash_index'] = 0
       state['flash_timer'] = pygame.time.get_ticks()
+
+def main():
+      screen = pygame.display.set_mode((WIDTH, HEIGHT))
+      pygame.display.set_caption("Color Memory Game")
+      clock = pygame.time.clock()
+
+      state = {
+            'game_state' : START,
+            'sequence' : [],
+            'user_sequence' : [],
+            'flashing' : False,
+            'flash_index' : 0,
+            'flash_timer' : 0,
+            'flash_delay' : 650
+      }
