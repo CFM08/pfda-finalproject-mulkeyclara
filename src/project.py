@@ -106,6 +106,12 @@ def main():
                   show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
                   show_message(screen, "Click To Restart!", y_offset=120, size=25)
 
+            elif state['game_state'] == "win":
+                  screen.fill((0, 0, 0))
+                  show_message(screen, "You Win!", y_offset = 0, size=60)
+                  show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
+                  show_message(screen, "Click To Play Again!", y_offset=120, size=25)
+
             pygame.display.flip()
 
             for event in pygame.event.get():
