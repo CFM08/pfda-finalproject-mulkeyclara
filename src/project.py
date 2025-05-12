@@ -4,7 +4,7 @@ import time
 
 pygame.init()
 
-WIDTH, HEIGHT = 1200, 600
+WIDTH, HEIGHT = 800, 800
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Color Memorization")
 TILE_SIZE = WIDTH // 3
