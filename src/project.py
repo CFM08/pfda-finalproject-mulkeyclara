@@ -91,6 +91,12 @@ def main():
                 )
                  draw_grid(screen, highlight)
             
+            elif state['game_state'] == GAME_OVER:
+                  draw_grid(screen)
+                  show_message(screen, "Game Over!", y_offset = -32)
+                  show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
+                  show_message(screen, "Click To Restart!", y_offset=120, size=25)
+
             pygame.display.flip()
 
             for event in pygame.event.get():
@@ -115,8 +121,8 @@ def main():
                                 start_new_round(state)
                     
                     elif state['game_state'] == GAME_OVER:
-                          show_message(screen, "Game Over! Click To Restart!")
-                          draw_grid(screen)
+                          state['sequence'] = []
+                          state['user_sequence'] = []
                           state['game_state'] = START
 
       while running:
