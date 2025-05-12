@@ -95,7 +95,9 @@ def main():
             'max_rounds': 10,
             'click_highlight': None,
             'click_time': 0,
-            'click_duration': 250
+            'click_duration': 250,
+            'waiting_to_continue': False,
+            'continue_time': 0,
       }
 
       running = True
@@ -125,6 +127,11 @@ def main():
                              state['click_highlight'] = None
                 
                  draw_grid(screen, highlight)
+
+                 if state['waiting_to_continue']:
+                       if now - state['click_time'] > state['click_duration']:
+                              state['waiting_to_continue'] = False
+                              start_new_round(state)
 
                  show_message(screen, f"Round:{state['round']}", y_offset=-280, size=30)
                  show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-250, size=30)
@@ -167,8 +174,8 @@ def main():
                           if tile != state['sequence'][index]:
                                 state['game_state'] = GAME_OVER
                           elif len(state['user_sequence']) == len(state['sequence']):
-                                pygame.time.delay(500)
-                                start_new_round(state)
+                                state['waiting_to_continue'] = True
+                                state['continue_time'] = pygame.time.get_ticks()
                     
                     elif state['game_state'] == GAME_OVER or state['game_state'] == "win":
                           state['sequence'] = []
