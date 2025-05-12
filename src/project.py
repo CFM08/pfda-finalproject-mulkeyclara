@@ -96,6 +96,9 @@ def main():
                       else None
                 )
                  draw_grid(screen, highlight)
+
+                 show_message(screen, f"Round:{state['round']}", y_offset=-280, size=30)
+                 show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-250, size=30)
             
             elif state['game_state'] == GAME_OVER:
                   screen.fill((0, 0, 0)) # to black out the screen
