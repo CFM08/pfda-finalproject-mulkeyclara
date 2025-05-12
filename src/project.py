@@ -50,7 +50,7 @@ def show_message(screen, text, y_offset=0, size=60):
 def start_new_round(state):
       state['round'] += 1
       if state['round'] > state['max_rounds']:
-            confetti_particles = [ConfettiParticle() for _ in range(100)]
+            state['confetti'] = [ConfettiParticle() for _ in range(100)]
             state['game_state'] = "win"
             return
       state['sequence'].append(random.randint(0, 8))
@@ -58,12 +58,11 @@ def start_new_round(state):
       state['flashing'] = True
       state['flash_index'] = 0
       state['flash_timer'] = pygame.time.get_ticks()
-      state['confetti'] = confetti_particles
 
 class ConfettiParticle:
       def __init__(self):
             self.x = random.randint(0, WIDTH)
-            self.y - random.randint(-HEIGHT, 0)
+            self.y = random.randint(-HEIGHT, 0)
             self.size = random.randint(4, 8)
             self.speed_y = random.uniform(1, 4)
             self.speed_x = random.uniform(-1, 1)
