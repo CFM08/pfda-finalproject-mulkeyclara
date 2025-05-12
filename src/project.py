@@ -67,6 +67,16 @@ class ConfettiParticle:
             self.speed_x = random.uniform(-1, 1)
             self.color = random.choice(COLORS)
 
+      def update(self):
+            self.y += self.speed_y
+            self.x += self.speed_x
+            if self.y > HEIGHT:
+                  self.y = random.randint(-HEIGHT, 0)
+                  self.x = random.randint(0, WIDTH)
+
+      def draw(self, screen):
+            pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.size)
+
 def main():
       screen = pygame.display.set_mode((WIDTH, HEIGHT))
       pygame.display.set_caption("Color Memory Game")
