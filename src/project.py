@@ -58,6 +58,15 @@ def start_new_round(state):
       state['flash_index'] = 0
       state['flash_timer'] = pygame.time.get_ticks()
 
+class ConfettiParticle:
+      def __init__(self):
+            self.x = random.randint(0, WIDTH)
+            self.y - random.randint(-HEIGHT, 0)
+            self.size = random.randint(4, 8)
+            self.speed_y = random.uniform(1, 4)
+            self.speed_x = random.uniform(-1, 1)
+            self.color = random.choice(COLORS)
+
 def main():
       screen = pygame.display.set_mode((WIDTH, HEIGHT))
       pygame.display.set_caption("Color Memory Game")
