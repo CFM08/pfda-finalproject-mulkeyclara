@@ -48,6 +48,10 @@ def show_message(screen, text, y_offset=0, size=60):
       screen.blit(render, rect)
 
 def start_new_round(state):
+      state['round'] += 1
+      if state['round'] > state['max_rounds']:
+            state['game_state'] = "win"
+            return
       state['sequence'].append(random.randint(0, 8))
       state['user_sequence'] = []
       state['flashing'] = True
@@ -66,7 +70,9 @@ def main():
             'flashing' : False,
             'flash_index' : 0,
             'flash_timer' : 0,
-            'flash_delay' : 650
+            'flash_delay' : 650,
+            'round': 0,
+            'max_rounds': 3
       }
 
       running = True
