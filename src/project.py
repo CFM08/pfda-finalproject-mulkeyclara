@@ -41,10 +41,10 @@ def get_tile_from_pos(pos):
             row = y // TILE_SIZE
             return row * 3 + col
 
-def show_message(screen, text):
-      font = pygame.font.SysFont(None, 60)
+def show_message(screen, text, y_offset=0, size=60):
+      font = pygame.font.SysFont(None, size)
       render = font.render(text, True, (255, 255, 255))
-      rect = render.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+      rect = render.get_rect(center=(WIDTH // 2, HEIGHT // 2 + y_offset))
       screen.blit(render, rect)
 
 def start_new_round(state):
@@ -93,7 +93,7 @@ def main():
             
             elif state['game_state'] == GAME_OVER:
                   draw_grid(screen)
-                  show_message(screen, "Game Over!", y_offset = -30)
+                  show_message(screen, "Game Over!", y_offset = 0, size=60)
                   show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
                   show_message(screen, "Click To Restart!", y_offset=120, size=25)
 
