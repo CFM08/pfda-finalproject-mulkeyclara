@@ -50,6 +50,7 @@ def show_message(screen, text, y_offset=0, size=60):
 def start_new_round(state):
       state['round'] += 1
       if state['round'] > state['max_rounds']:
+            confetti_particles = [ConfettiParticle() for _ in range(100)]
             state['game_state'] = "win"
             return
       state['sequence'].append(random.randint(0, 8))
@@ -57,6 +58,7 @@ def start_new_round(state):
       state['flashing'] = True
       state['flash_index'] = 0
       state['flash_timer'] = pygame.time.get_ticks()
+      state['confetti'] = confetti_particles
 
 class ConfettiParticle:
       def __init__(self):
@@ -124,9 +126,12 @@ def main():
                   show_message(screen, "Game Over!", y_offset = 0, size=60)
                   show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
                   show_message(screen, "Click To Restart!", y_offset=120, size=25)
-
+            
             elif state['game_state'] == "win":
                   screen.fill((0, 0, 0))
+                  for particle in state.get('confetti', []):
+                        particle.update()
+                        particle.draw(screen)
                   show_message(screen, "You Win!", y_offset = 0, size=60)
                   show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
                   show_message(screen, "Click To Play Again!", y_offset=120, size=25)
@@ -158,6 +163,7 @@ def main():
                           state['sequence'] = []
                           state['user_sequence'] = []
                           state['round'] = 0
+                          state['confetti'] = []
                           state['game_state'] = START
 
       while running:
