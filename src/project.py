@@ -107,13 +107,16 @@ def main():
                           tile = get_tile_from_pos(event.pos)
                           state['user_sequence'].append(tile)
 
-                          if tile != state['sequence'][len(state['sequence']) - 1]:
+                          index = len(state['user_sequence']) - 1
+                          if tile != state['sequence'][index]:
                                 state['game_state'] = GAME_OVER
                           elif len(state['user_sequence']) == len(state['sequence']):
                                 pygame.time.delay(500)
                                 start_new_round(state)
                     
                     elif state['game_state'] == GAME_OVER:
+                          show_message(screen, "Game Over! Click To Restart!")
+                          draw_grid(screen)
                           state['game_state'] = START
 
       while running:
