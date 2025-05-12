@@ -4,7 +4,7 @@ import time
 
 pygame.init()
 
-WIDTH, HEIGHT = 600, 600
+WIDTH, HEIGHT = 800, 800
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Color Memorization")
 TILE_SIZE = WIDTH // 3
@@ -92,7 +92,7 @@ def main():
             'flash_timer' : 0,
             'flash_delay' : 650,
             'round': 0,
-            'max_rounds': 3
+            'max_rounds': 10
       }
 
       running = True
