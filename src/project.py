@@ -126,9 +126,10 @@ def main():
                                 pygame.time.delay(500)
                                 start_new_round(state)
                     
-                    elif state['game_state'] == GAME_OVER:
+                    elif state['game_state'] == GAME_OVER or state['game_state'] == "win":
                           state['sequence'] = []
                           state['user_sequence'] = []
+                          state['round'] = 0
                           state['game_state'] = START
 
       while running:
