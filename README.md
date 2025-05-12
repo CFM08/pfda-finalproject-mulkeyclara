@@ -5,6 +5,7 @@
 ## Video URL:
 
 ## Github URL:
+        https://github.com/CFM08/pfda-finalproject-mulkeyclara
 
 ### Description:
         Once you begin to play, a **3x3 grid** will appear with *different colors*. They will *light up* in an order for **10 rounds** to which you are meant to follow. When you win, you are given a *screen with confetti*. When you lost, you are prompted to start again.
