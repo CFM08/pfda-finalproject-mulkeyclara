@@ -92,7 +92,10 @@ def main():
             'flash_timer' : 0,
             'flash_delay' : 650,
             'round': 0,
-            'max_rounds': 10
+            'max_rounds': 10,
+            'click_highlight': None,
+            'click_time': 0,
+            'click_duration': 250
       }
 
       running = True
@@ -110,11 +113,17 @@ def main():
                              state['flash_index'] += 1
                              if state['flash_index'] >= len(state['sequence']):
                                 state['flashing'] = False
-                 highlight =(
-                      state['sequence'][state['flash_index']]
-                      if state['flashing'] and state['flash_index'] < len(state['sequence'])
-                      else None
-                )
+                 highlight = None
+
+                 if state['flashing'] and state['flash_index'] < len(state['sequence']):
+                       highlight = state['sequence'][state['flash_index']]
+
+                 elif state['click_highlight'] is not None:
+                       if now - state['click_time'] < state['click_duration']:
+                             highlight = state['click_highlight']
+                       else:
+                             state['click_highlight'] = None
+                
                  draw_grid(screen, highlight)
 
                  show_message(screen, f"Round:{state['round']}", y_offset=-280, size=30)
@@ -150,6 +159,9 @@ def main():
                     elif state['game_state'] == PLAYING and not state['flashing']:
                           tile = get_tile_from_pos(event.pos)
                           state['user_sequence'].append(tile)
+
+                          state['click_highlight'] = tile
+                          state['click_time'] = pygame.time.get_ticks()
 
                           index = len(state['user_sequence']) - 1
                           if tile != state['sequence'][index]:
