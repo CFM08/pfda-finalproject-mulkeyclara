@@ -92,7 +92,7 @@ def main():
                  draw_grid(screen, highlight)
             
             elif state['game_state'] == GAME_OVER:
-                  draw_grid(screen)
+                  screen.fill((0, 0, 0)) # to black out the screen
                   show_message(screen, "Game Over!", y_offset = 0, size=60)
                   show_message(screen, f"Score: {len(state['sequence']) - 1}", y_offset=-45, size=40)
                   show_message(screen, "Click To Restart!", y_offset=120, size=25)
