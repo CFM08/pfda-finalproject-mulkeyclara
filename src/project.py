@@ -106,7 +106,7 @@ def main():
             now = pygame.time.get_ticks()
 
             if state['game_state'] == START:
-                  show_message(screen, "Click to Start")
+                  show_message(screen, "Click to Start!")
 
             elif state['game_state'] == PLAYING:
                  if state['flashing']:
