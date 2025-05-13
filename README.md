@@ -16,9 +16,9 @@ Including music to the overall experience would heighten the enjoyment.
 Better ways of framing the points and rounds.
 
 ### Features:
-**10 Rounds** for the player to go through
-Flashing lights on the colors in a *consistent rhythm*
-A showcasing of *points*
+**10 Rounds** for the player to go through.
+Flashing lights on the colors in a *consistent rhythm*.
+A showcasing of *points*.
 A **win, lose, and start screen**
-Colors are highlighted by what your *mouse clicks*
+Colors are highlighted by what your *mouse clicks*.
 
